@@ -1,0 +1,242 @@
+<!doctype html><html lang=zh-Hant><head><meta name=robots content="noindex,nofollow"><script>/* 預覽版 shim: only data.json is fetched; every action is blocked with a toast */
+(function(){var FK={"x": {"x": {"102": 0.0004890000000000001, "103": 0.000352, "104": 0.000815, "105": 0.0009780000000000001, "106": 0.0006159999999999999, "107": 0.00108, "108": 0.0009540000000000001, "109": 0.00091, "110": 0.0009680000000000001, "111": 0.0019560000000000003, "112": 0.0014040000000000003, "113": 0.0018899999999999998}, "w": {}, "l": {}}, "state": {"open": [{"id": 100, "symbol": "PEPE2", "left": 1.0, "pct": null, "tp": null, "sl": null, "u": null, "pend": null}, {"id": 101, "symbol": "WIFX", "left": 1.0, "pct": null, "tp": null, "sl": null, "u": null, "pend": null}], "csrf": "preview", "all": null, "all_ok": true, "auto": true}, "auto": {"on": true, "patched": true, "csrf": "preview", "mon": true}, "scan": {"running": false, "last": null, "csrf": "preview"}},MSG='預覽版不能操作',of=window.fetch.bind(window),tt;
+function toast(s){var t=document.getElementById('pvt');if(!t){if(!document.body)return;t=document.createElement('div');t.id='pvt';document.body.appendChild(t)}t.textContent=s||MSG;t.className='v';clearTimeout(tt);tt=setTimeout(function(){t.className=''},1600)}
+window.PVT=toast;var J=function(o){return Promise.resolve(new Response(JSON.stringify(o),{status:200,headers:{'Content-Type':'application/json'}}))};
+window.fetch=function(u,o){u=String(u&&u.url||u);var m=((o&&o.method)||'GET').toUpperCase();
+ if(m=='GET'&&u.indexOf('/meme/api/data')==0)return of('data.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(d){d.received=Date.now()/1000;d.data.push_ts=d.received;return new Response(JSON.stringify(d),{status:200,headers:{'Content-Type':'application/json'}})});
+ var k=(u.match(/^\/meme\/ctl\/(\w+)/)||[])[1];if(m=='GET'&&FK[k])return J(FK[k]);
+ toast();return Promise.reject(new Error(MSG))};
+window.alert=function(){toast()};window.confirm=function(){toast();return false};window.prompt=function(){toast();return null};
+try{var SW={getRegistration:function(){return Promise.resolve(null)},register:function(){toast();return Promise.reject(new Error(MSG))},addEventListener:function(){},ready:new Promise(function(){})};Object.defineProperty(navigator,'serviceWorker',{value:SW})}catch(_){}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href],#atb,#msb,#nfx46,[data-act]');if(!a)return;var hr=a.getAttribute&&a.getAttribute('href');
+ if(a.tagName=='A'&&(hr==null||hr.charAt(0)=='#'||hr.indexOf('javascript')==0))return;e.preventDefault();e.stopImmediatePropagation();toast()},true)})()</script>
+<style>#pvt{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 84px);transform:translate(-50%,16px);background:#2b3139;color:#fff;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:700;opacity:0;transition:.2s;pointer-events:none;z-index:99999;box-shadow:0 6px 24px #0008}#pvt.v{opacity:1;transform:translate(-50%,0)}
+#pvb{margin:8px 12px;padding:9px 12px;border-radius:10px;background:#2a2410;border:1px solid #6b5a1a;color:#f0d27a;font-size:12.5px;line-height:1.45}#pvb b{color:#ffe08a}</style><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name=theme-color content="#07090d"><title>交易機器人</title><meta name=apple-mobile-web-app-title content='交易機器人'><meta name=application-name content='交易機器人'>
+<style>:root{--bg:#000;--card:#121214;--card2:#1c1c1f;--line:#232327;--tx:#f5f5f7;--mu:#8e8e93;--g:#25c26e;--r:#f6465d;--y:#f0b90b;--ac:#c4f45c;--b:#4aa8ff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--tx);font:14px/1.45 Inter,-apple-system,"SF Pro Text","PingFang TC","Noto Sans TC",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:560px;margin:0 auto;padding:max(10px,env(safe-area-inset-top)) 16px 40px}
+@media(min-width:900px){.wrap{max-width:1080px}.dk{display:grid;grid-template-columns:420px 1fr;gap:20px;align-items:start}.dk>div:first-child{position:sticky;top:12px}}
+.hd{display:flex;align-items:center;gap:10px;padding:4px 0 8px}.logo{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#9945ff,#14f195);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px}
+.hd h1{font-size:16px;margin:0;font-weight:700}.badge{font-size:10.5px;font-weight:700;color:var(--y);background:rgba(240,185,11,.12);padding:2px 7px;border-radius:6px;margin-left:6px;vertical-align:2px}
+.live{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--g);font-weight:600;background:#121214;padding:5px 10px;border-radius:999px}.live.stale{color:var(--r)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--g);animation:pl 1.6s infinite}.dot.stale{background:var(--r);animation:none}@keyframes pl{50%{opacity:.35}}
+.hero{padding:14px 2px 6px}.hero .l{font-size:13px;color:var(--mu);display:flex;align-items:center;gap:6px}.hero .eq{font-size:40px;font-weight:700;letter-spacing:-1.2px;font-variant-numeric:tabular-nums;margin:2px 0 2px;cursor:pointer}
+.hero .eq small{font-size:16px;color:var(--mu);font-weight:600;margin-left:4px;letter-spacing:0}
+.pr{display:flex;gap:8px;margin-top:10px}.pb{flex:1;background:var(--card);border-radius:14px;padding:10px 12px;cursor:pointer;min-width:0}.pb span{display:block;font-size:11.5px;color:var(--mu)}.pb b{font-size:16px;font-variant-numeric:tabular-nums;font-weight:700}.pb i{font-style:normal;font-size:11.5px;margin-left:4px}
+.ch{height:70px;margin:12px -2px 0;cursor:pointer}.ch svg{width:100%;height:100%;display:block}
+.qa{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:16px 0 4px}.qa div{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;color:#d1d1d6;cursor:pointer}.qa div i{font-style:normal;width:46px;height:46px;border-radius:50%;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:19px;transition:transform .12s}.qa div:active i{transform:scale(.9)}
+.sh{display:flex;align-items:baseline;justify-content:space-between;margin:22px 2px 8px}.sh h3{margin:0;font-size:16px;font-weight:700}.sh a{font-size:12.5px;color:var(--mu);cursor:pointer;text-decoration:none}
+.lst{background:var(--card);border-radius:18px;padding:2px 12px}
+.row{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}.row:last-child{border:0}.row:active{opacity:.7}
+#md .row{background:var(--card);border-radius:14px;padding:12px;margin:8px 0;border:0}
+.av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12.5px;color:#fff;flex:none}
+.mid{flex:1;min-width:0}.nm{font-weight:650;font-size:15px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.st{color:var(--mu);font-size:12px;margin-top:2px;overflow:hidden;text-overflow:ellipsis}.rt{text-align:right;flex:none;font-variant-numeric:tabular-nums}.rt b{font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}@media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+.tile{background:var(--card);border-radius:18px;padding:14px;cursor:pointer;min-width:0;position:relative;transition:transform .12s}.tile:active{transform:scale(.97)}
+.tile .ti{font-size:12.5px;color:var(--mu);display:flex;align-items:center;gap:6px}.tile .ti i{font-style:normal;font-size:14px}.tile:after{content:'›';position:absolute;right:12px;top:10px;color:#48484d;font-size:17px}
+.tile .big{font-size:21px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:6px;letter-spacing:-.3px}.tile .sub{font-size:11.5px;color:var(--mu);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile.wide{grid-column:1/-1}.tile .tip{font-size:12.5px;color:#d1d1d6;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.up{color:var(--g)}.dn{color:var(--r)}.nu{color:var(--mu)}
+.pill{display:inline-block;padding:2px 7px;border-radius:6px;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:2px}.pill.up{background:rgba(37,194,110,.14)}.pill.dn{background:rgba(246,70,93,.14)}.pill.nu{background:var(--card2)}
+.emp{text-align:center;color:var(--mu);padding:22px 10px;font-size:13px}.emp b{display:block;font-size:26px;margin-bottom:4px}
+.warn{background:rgba(246,70,93,.12);color:#ff8a98;border-radius:12px;padding:8px 12px;font-size:13px;margin-top:8px;display:none}
+.fz{display:flex;gap:10px;align-items:center;font-size:11px;color:var(--mu);margin-top:2px}.fz.late{color:var(--r)}#rb{margin-left:auto;background:var(--card2);color:#d1d1d6;border:0;border-radius:999px;padding:4px 11px;font-size:11px}
+#ov{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;z-index:20;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}#ov.on{display:flex}
+#md{background:#0b0b0d;border-radius:22px 22px 0 0;width:100%;max-width:560px;max-height:90vh;overflow:auto;padding:8px 16px max(24px,env(safe-area-inset-bottom));animation:up .22s ease}@media(min-width:620px){#ov{align-items:center}#md{border-radius:22px}}@keyframes up{from{transform:translateY(40px);opacity:0}}
+#md:before{content:'';display:block;width:36px;height:4px;border-radius:2px;background:#3a3a3e;margin:2px auto 6px}
+.mh{display:flex;align-items:center;gap:8px;position:sticky;top:-8px;background:#0b0b0d;padding:6px 0 10px;z-index:2}.mh h2{margin:0;font-size:17px;flex:1}.mh button{background:var(--card2);border:0;color:var(--tx);border-radius:999px;width:32px;height:32px;font-size:15px}.mh .bk{width:auto;padding:0 12px;font-size:13px}
+.sc{font-size:12px;font-weight:700;border-radius:8px;padding:3px 7px;background:var(--card2)}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}.kv div{background:var(--card);border-radius:12px;padding:10px}.kv span{display:block;color:var(--mu);font-size:11.5px}.kv b{font-size:15px;font-variant-numeric:tabular-nums}
+.lg{display:flex;gap:8px;padding:9px 2px;border-top:1px solid var(--line);font-size:12.5px}.lg .tm{color:var(--mu);flex:none}.tag{font-size:10.5px;font-weight:700;padding:2px 6px;border-radius:6px;flex:none;min-width:40px;text-align:center;height:fit-content}
+.t-risk{background:rgba(246,70,93,.14);color:#ff7b8c}.t-judge{background:rgba(160,140,255,.14);color:#bfb3ff}.t-watch{background:rgba(240,185,11,.14);color:var(--y)}.t-buy{background:rgba(37,194,110,.14);color:var(--g)}.t-fill{background:rgba(74,168,255,.14);color:var(--b)}.t-close{background:var(--card2);color:#d1d1d6}
+.bar{margin:10px 0;font-size:13px}.bar .bt{height:6px;border-radius:4px;background:var(--card2);margin-top:5px;overflow:hidden}.bar .bt i{display:block;height:100%;background:var(--r);opacity:.8}
+.rule{background:var(--card);border-radius:14px;padding:10px 12px;margin:10px 0;font-size:13px}.rule h4{margin:0 0 6px;font-size:14px}.rule div{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--line)}.rule div:last-child{border:0}.rule span:last-child{color:var(--mu);text-align:right;word-break:break-all}
+.empty{color:var(--mu);text-align:center;padding:22px;font-size:13px}.note{color:var(--mu);font-size:12px;margin:6px 2px 8px}.chk{font-size:12.5px;padding:3px 0}
+.foot{color:#5a5a60;font-size:11px;text-align:center;margin-top:24px;line-height:1.7}
+.ca{display:inline-flex;align-items:center;gap:6px;margin-top:3px;font-size:11.5px;color:var(--mu);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;max-width:100%}
+.ca code{color:#a1a1a6;white-space:nowrap}
+.cpb{font-family:inherit;font-size:11px;font-weight:600;background:var(--card2);color:#e5e5ea;border:0;border-radius:6px;padding:2px 8px;cursor:pointer;white-space:nowrap;min-height:22px}.cpb:active{transform:scale(.95)}
+.caf{background:var(--card);border-radius:14px;padding:12px;margin:8px 0}.caf span{display:block;color:var(--mu);font-size:11.5px;margin-bottom:4px}.caf code{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;word-break:break-all;color:var(--tx);user-select:all;-webkit-user-select:all}
+.caf .lk{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.caf .lk a,.caf .lk button{font-size:12px;font-weight:600;text-decoration:none;color:var(--tx);background:var(--card2);border:0;border-radius:999px;padding:6px 12px;cursor:pointer}.caf .lk button{background:var(--tx);color:#000}
+.lka{font-size:11px;color:var(--b);text-decoration:none}
+.tips li{margin:6px 0;font-size:13.5px}.tips{padding-left:18px}
+#toast{position:fixed;left:50%;bottom:max(28px,env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);background:#f5f5f7;color:#000;font-weight:700;font-size:13px;padding:8px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.2s;z-index:50}#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+</style><link rel=apple-touch-icon sizes=180x180 href='tb-icon-512.png'><link rel=icon type=image/png sizes=512x512 href='tb-icon-512.png'><meta name=apple-mobile-web-app-capable content=yes><meta name=mobile-web-app-capable content=yes><meta name=theme-color content='#0b0f14'><style>
+#tnav{position:fixed;top:0;left:0;right:0;z-index:100000;padding:env(safe-area-inset-top) max(10px,env(safe-area-inset-right)) 0 max(10px,env(safe-area-inset-left));background:rgba(11,15,20,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid #1c2330;font:14px -apple-system,system-ui,sans-serif}
+#tnav .in{height:48px;display:flex;align-items:center;gap:8px;max-width:980px;margin:0 auto}
+#tnav .seg{display:flex;background:#151b25;border:1px solid #232b39;border-radius:10px;padding:3px}
+#tnav .seg a{color:#8b93a7;text-decoration:none;font-weight:600;padding:5px 13px;border-radius:7px;font-size:14px}
+#tnav .seg a.on{background:#f5f7fa;color:#0b0f14}
+#tnav a:before,#tnav button:before{content:none!important}
+#tnav .sp{flex:1}
+#tnav_r{display:flex;align-items:center;gap:6px}
+#tnav_r button{padding:5px 10px!important;font-size:12px!important;border-radius:8px!important;box-shadow:none!important;background:#151b25!important;color:#d6dbe6!important;border:1px solid #232b39!important;font-weight:600!important;white-space:nowrap}
+#tnav_r a{color:#8b93a7!important;font-size:12px!important;text-decoration:none}
+#tnav .lo{color:#f87171;text-decoration:none;font-size:13px;font-weight:600;padding:5px 2px 5px 6px;white-space:nowrap}
+html{scroll-padding-top:calc(52px + env(safe-area-inset-top))}
+body{padding-top:calc(49px + env(safe-area-inset-top))!important}
+.hd{top:calc(49px + env(safe-area-inset-top))!important}
+.top{position:relative!important;top:0!important;padding-top:0!important}
+</style><style>#tnav .br{color:#f5f7fa;font-weight:700;font-size:13px;letter-spacing:.3px;white-space:nowrap;margin-right:2px}#tnav .seg a{padding:5px 9px;font-size:13px;white-space:nowrap}#tnav .in{gap:6px}#tnav_r a{white-space:nowrap}#tnav_r button{padding:5px 8px!important}@media(max-width:360px){#tnav .br{display:none}}</style><style>html{touch-action:manipulation;-webkit-text-size-adjust:100%}input,select,textarea{font-size:16px!important}</style><script>document.addEventListener('gesturestart',function(e){e.preventDefault()});document.addEventListener('touchmove',function(e){if(e.scale&&e.scale!==1)e.preventDefault()},{passive:false})</script><script>var MX={x:{},w:{},l:{}};
+function ZE(s){return String(s).replace(/[&<>"']/g,function(c){return'&#'+c.charCodeAt(0)+';'})}
+function ZP(x){return x==null||!isFinite(x)?'—':(+x).toPrecision(4)}
+function ZX(i){return MX.x[i]}
+function ZR(r){r=String(r||'');if(!r)return'';var T=[['ladder','分批止盈'],['principal','先賣回本金'],['hard_stop','停損'],['breakeven','保本停損'],['trailing','移動停利'],['time_stop','時間停損'],['max hold','持有時間到上限'],['liq','流動性流失'],['momentum','賣壓轉強'],['smart_sold','聰明錢賣出'],['dev_sold','開發者賣幣'],['manual','手動平倉']];for(var i=0;i<T.length;i++)if(r.indexOf(T[i][0])==0)return T[i][1];return'其他出場'}
+function ZW(i){var w=MX.w[i];if(!w||!w[0])return'0';var p=[];w[1]&&p.push('聰明錢 '+w[1]);w[2]&&p.push('快手 '+w[2]);w[3]&&p.push('開發者警示 '+w[3]);return w[0]+' 個'+(p.length?'（'+p.join('・')+'）':'')}
+function ZL(k,o){var L=MX.l[o.id]||[],h='<div class=rule><h4>進出場</h4><div><span>進場價</span><span>'+ZP(o.entry)+'</span></div>';
+L.forEach(function(x){var d=new Date(x[2]*1e3);h+='<div><span>'+ZE(('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)+' '+ZR(x[0]))+'</span><span>出場價 '+ZP(x[1])+'</span></div>'});
+if(k!='o')h+='<div><span>出場均價（扣滑價手續費）</span><span>'+ZP(MX.x[o.id])+'</span></div>';return h+'</div>'}
+function ZF(){fetch('/meme/ctl/x',{credentials:'same-origin',cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(j){var f=!MX.ok;MX=j;MX.ok=1;try{typeof RM=="function"&&RM();f&&typeof L=="function"&&L()}catch(_){}}}).catch(function(){})}
+ZF();setInterval(ZF,60000);
+</script><script>(function(){var H=location.hash;try{if(!/^#t=\d+$/.test(H)){H=sessionStorage.getItem('nh')||'';}sessionStorage.removeItem('nh')}catch(_){}
+var n=0;function go(h){var m=/^#t=(\d+)$/.exec(h||'');if(!m)return;var id=+m[1];
+(function w(){try{if(typeof D!='undefined'&&D){var k=(D.open||[]).some(function(p){return p.id==id})?'o':(D.closed||[]).some(function(p){return p.id==id})?'c':'';if(k){OP(k,id)}history.replaceState(null,'',location.pathname+location.search);return}}catch(_){}if(++n<40)setTimeout(w,500)})()}
+addEventListener('hashchange',function(){n=0;go(location.hash)});
+navigator.serviceWorker&&navigator.serviceWorker.addEventListener('message',function(e){var u=e.data&&e.data.nav;if(typeof u=='string'&&u.indexOf(location.origin+'/')==0){var x=new URL(u);if(x.pathname==location.pathname){if(x.hash!=location.hash)location.hash=x.hash}else location.href=u}});
+go(H)})();
+</script><style id=nfx46>@media(max-width:560px){#tnav{padding-left:max(6px,env(safe-area-inset-left))!important;padding-right:max(6px,env(safe-area-inset-right))!important;font-size:13px!important}
+#tnav .in{gap:4px!important;min-width:0;overflow:hidden;flex-wrap:nowrap!important}
+#tnav .in>*{flex-shrink:0;min-width:0}
+#tnav .in>:not(.seg):not(.sp):not(#tnav_r):not(.lo){flex-shrink:1!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px!important}
+#tnav .seg{padding:2px!important}#tnav .seg a{padding:4px 7px!important;font-size:13px!important;white-space:nowrap}
+#tnav .sp{flex:1 1 0!important;min-width:0!important}
+#tnav_r{gap:3px!important;flex-shrink:0;min-width:0}#tnav_r>*{flex-shrink:0}
+#tnav_r button{padding:4px 7px!important;font-size:12px!important;white-space:nowrap}#tnav_r button.nfi{padding:4px 6px!important;min-width:28px}
+#tnav .lo{flex-shrink:0!important}
+#tnav_r a{font-size:12px!important;padding:4px 2px!important;white-space:nowrap}
+#tnav .lo{font-size:12px!important;padding:4px 0 4px 4px!important}}
+@media(max-width:350px){#tnav .seg a{padding:4px 5px!important;font-size:12px!important}}</style>
+<script>(function(){function f(){var n=document.getElementById('tnav');if(!n||innerWidth>560)return;var i=n.querySelector('.in');if(!i)return;
+function ov(){return i.scrollWidth>i.clientWidth+1||n.querySelector('.lo').getBoundingClientRect().right>innerWidth}
+function sh(all){n.querySelectorAll('#tnav_r button').forEach(function(b){var t=b.textContent.replace(/\s+/g,' ').trim(),o=b.getAttribute('data-nf')||t;
+if(t==='關閉'){b.setAttribute('data-nf',o);b.title='關閉通知';b.setAttribute('aria-label','關閉通知');b.textContent='✕';b.classList.add('nfi')}
+else if(t.indexOf('🔔')===0&&t!=='🔔'&&(all||!/開啟|通知$/.test(t))){b.setAttribute('data-nf',o);b.title=o;b.setAttribute('aria-label',o);b.textContent='🔔';b.classList.add('nfi')}})}
+[].forEach.call(i.children,function(c){if(c.getAttribute('data-nfh')){c.style.display='';c.removeAttribute('data-nfh')}});
+sh(0);if(ov())sh(1);if(ov())[].forEach.call(i.children,function(c){if(!c.matches('.seg,.sp,#tnav_r,.lo')){c.style.display='none';c.setAttribute('data-nfh','1')}})}
+function go(){f();var n=document.getElementById('tnav'),r=document.getElementById('tnav_r');if(r&&window.MutationObserver)new MutationObserver(function(){clearTimeout(go.t);go.t=setTimeout(f,30)}).observe(r,{childList:true,subtree:true,characterData:true});addEventListener('resize',function(){clearTimeout(go.t);go.t=setTimeout(f,60)})}
+if(document.readyState=='loading')document.addEventListener('DOMContentLoaded',go);else go()})()</script><style>#atb{flex:none;border:1px solid #3a4150;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;background:#1b2230;color:#cfd6e4;margin-left:auto}#atb:not([hidden])+.live{margin-left:0}.hd h1{white-space:nowrap}#atb.on{background:#123d2a;border-color:#2fbf71;color:#7ff0b0}#atb.off{background:#2a1d1d;border-color:#7a3b3b;color:#ffb3b3}#atb:disabled{opacity:.6}</style><style>#v54b{margin:8px 12px;padding:9px 12px;border-radius:10px;background:#3a1d1d;border:1px solid #8a3b3b;color:#ffd7d7;font-weight:700;font-size:13px;line-height:1.4}</style></head><body><nav id=tnav><div class=in><span class=br>交易機器人</span><div class=seg><a href='/meme' class=on>迷因</a><a href='/perp-dash'>合約</a><a href='/perp-dash/okx'>OKX</a></div><div class=sp></div><div id=tnav_r></div><a class=lo href='/perp-dash/logout'>登出</a></div></nav><div class=wrap>
+<div class=hd><div class=logo>◎</div><h1>SOL 迷因群<span class=badge>紙上交易</span></h1><button id=atb hidden onclick="ATB()"></button><div class=live id=live><span class=dot id=dot></span><span id=lvt>即時</span></div></div>
+<div id=v54b hidden>監控已關閉：不掃描、不連線、不自動停損停利；按停損/停利/減倉/全平時才抓一次價格。價格不即時。</div><div id=pvb><b>預覽版・範例資料・紙上交易・非投資建議</b>　畫面與正式版相同、可點選瀏覽，但所有操作（自動交易、掃描、停損停利、平倉）皆已停用；數字為示意用範例，不是真實績效。</div><div class=warn id=warn></div>
+<div class=dk><div><div id=hero></div><div class=fz id=fz><span id=fage>最後更新 — 秒前</span><span id=fnx>下次更新 10 秒</span><button id=rb onclick="RB()">立即更新</button><button id=msb onclick="MSB()">手動掃描</button></div></div>
+<div id=grid></div></div>
+<div class=foot id=ft></div></div>
+<div id=toast>已複製</div><div id=ov onclick="if(event.target===this)CL()"><div id=md></div></div>
+<script>
+const K=new URLSearchParams(location.search).get('k');let D=null,J=null,VIEW=null,STACK=[];
+const $=i=>document.getElementById(i),e=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const num=v=>typeof v=='number'&&isFinite(v);
+const usd=(v,s)=>num(v)?(s&&v>0?'+':'')+(v<0?'-':'')+'$'+Math.abs(v).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
+const k$=v=>num(v)?(Math.abs(v)>=1e6?'$'+(v/1e6).toFixed(2)+'M':Math.abs(v)>=1e3?'$'+(v/1e3).toFixed(1)+'k':'$'+v.toFixed(0)):'—';
+const pc=v=>num(v)?(v>0?'+':'')+v.toFixed(2)+'%':'—',cl=v=>!num(v)||v==0?'nu':v>0?'up':'dn';
+const tpe=(t,f)=>new Date(t*1000).toLocaleString('zh-TW',Object.assign({timeZone:'Asia/Taipei',hour12:false},f||{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}));
+const hm=t=>tpe(t,{hour:'2-digit',minute:'2-digit'});
+const ageS=h=>!num(h)?'—':h<1?Math.round(h*60)+' 分':h<48?h.toFixed(1)+' 小時':Math.round(h/24)+' 天';
+function hue(s){let h=0;for(const c of String(s))h=(h*31+c.charCodeAt(0))%360;return h}
+const av=s=>{const h=hue(s);return `<div class=av style="background:linear-gradient(135deg,hsl(${h},70%,50%),hsl(${(h+50)%360},70%,36%))">${e(String(s||'?').slice(0,2).toUpperCase())}</div>`};
+function spark(pts,w,h,col,fill){pts=(pts||[]).filter(p=>num(p[0])&&num(p[1]));if(pts.length<2)return'';const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]),x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys),dy=(y1-y0)||1,dx=(x1-x0)||1;
+const P=pts.map(p=>[(p[0]-x0)/dx*w,h-4-(p[1]-y0)/dy*(h-10)]);let d='M'+P.map(p=>p.join(',')).join('L');
+const id='g'+Math.random().toString(36).slice(2,7);return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio=none>${fill?`<defs><linearGradient id=${id} x1=0 y1=0 x2=0 y2=1><stop offset=0 stop-color="${col}" stop-opacity=.35 /><stop offset=1 stop-color="${col}" stop-opacity=0 /></linearGradient></defs><path d="${d}L${w},${h}L0,${h}Z" fill="url(#${id})"/>`:''}<path d="${d}" fill=none stroke="${col}" stroke-width=2 vector-effect=non-scaling-stroke /></svg>`}
+const MI=x=>x&&(x.mint||((D&&D.mints)||{})[x.symbol])||'';
+const sCA=m=>m.length>10?m.slice(0,4)+'…'+m.slice(-4):m;
+const ok58=m=>/^[1-9A-HJ-NP-Za-km-z]{20,60}$/.test(m||'');
+function CA(x){const m=MI(x);if(!ok58(m))return'';return `<div class=ca><code>${e(sCA(m))}</code><button class=cpb onclick="event.stopPropagation();CP('${m}')">複製</button></div>`}
+function CAI(x){const m=MI(x);if(!ok58(m))return'';return ` <span class=ca style="margin-top:0"><code>${e(sCA(m))}</code><button class=cpb onclick="event.stopPropagation();CP('${m}')">複製</button><a class=lka href="https://dexscreener.com/solana/${m}" target=_blank rel=noopener onclick="event.stopPropagation()">DEX</a><a class=lka href="https://debot.ai/token/solana/${encodeURIComponent(m)}" target=_blank rel="noopener noreferrer" onclick="event.stopPropagation()">Debot</a></span>`}
+function CAF(x){const m=MI(x);if(!ok58(m))return'<div class=caf><span>合約地址（CA）</span><code>—</code></div>';return `<div class=caf><span>合約地址（CA / Mint）</span><code>${e(m)}</code><div class=lk><button onclick="CP('${m}')">📋 複製合約</button><a href="https://debot.ai/token/solana/${encodeURIComponent(m)}" target=_blank rel="noopener noreferrer">🤖 打開 Debot ↗</a><a href="https://dexscreener.com/solana/${m}" target=_blank rel=noopener>DexScreener ↗</a><a href="https://solscan.io/token/${m}" target=_blank rel=noopener>Solscan ↗</a></div></div>`}
+let TT=0;function TO(t){const el=$('toast');el.textContent=t;el.classList.add('on');clearTimeout(TT);TT=setTimeout(()=>el.classList.remove('on'),1400)}
+function CPF(m){const t=document.createElement('textarea');t.value=m;t.setAttribute('readonly','');t.style.cssText='position:fixed;top:0;left:0;opacity:0;font-size:16px';document.body.appendChild(t);t.focus();t.select();t.setSelectionRange(0,m.length);let r=false;try{r=document.execCommand('copy')}catch(_){}document.body.removeChild(t);return r}
+async function CP(m){let r=false;try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(m);r=true}}catch(_){}if(!r)r=CPF(m);TO(r?'已複製':'複製失敗，請長按地址手動複製')}
+const TAG={risk:'風控',judge:'裁判',watch:'觀察',buy:'買入',fill:'成交',close:'平倉'};
+const WH={confirm:'鯨魚/聰明錢買入',weak:'鯨魚訊號弱',quiet:'無鯨魚動靜',dev_warning:'開發者錢包警示',missing:'鯨魚資料缺失'};
+// ---------- views ----------
+function W(){return (D.desk||{}).watch||{items:[]}}
+const V={
+pnl:{t:'💰 資產 / 損益',r(){const d=D,m=d.metrics||{},k=d.desk||{},st=d.start_equity||1000,eq=st+(m.realized_usd||0)+(m.unrealized_usd||0),hist=(J.history&&J.history.length>1)?J.history:(d.equity_history||[]);
+ return `<div class=kv><div><span>總資產</span><b>${usd(eq)}</b></div><div><span>總損益</span><b class=${cl(eq-st)}>${usd(eq-st,1)}（${pc((eq-st)/st*100)}）</b></div><div><span>已實現</span><b class=${cl(m.realized_usd)}>${usd(m.realized_usd||0,1)}</b></div><div><span>未實現</span><b class=${cl(m.unrealized_usd)}>${usd(m.unrealized_usd||0,1)}</b></div><div><span>勝 / 負</span><b>${k.wins??0} / ${k.losses??0}</b></div><div><span>起始資金</span><b>${usd(st)}</b></div>
+ <div><span>最佳交易</span><b class=${cl(k.best?.pnl)}>${k.best?e(k.best.symbol)+' '+usd(k.best.pnl,1):'—'}${k.best?CAI(k.best):''}</b></div><div><span>最差交易</span><b class=${cl(k.worst?.pnl)}>${k.worst?e(k.worst.symbol)+' '+usd(k.worst.pnl,1):'—'}${k.worst?CAI(k.worst):''}</b></div></div>
+ <div style="height:160px;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden">${spark(hist,400,160,eq>=st?'#16c784':'#ea3943',1)||'<div class=empty>尚無曲線資料</div>'}</div>`}},
+pos:{t:'📈 持倉',r(){const op=D.open||[];return op.map(p=>{const v=num(p.value)?p.value:p.size_usd*(1+(p.pct||0)/100);return `<div class=row onclick="OP('o',${p.id})">${av(p.symbol)}<div class=mid><div class=nm>${e(p.symbol)}</div>${CA(p)}<div class=st>進 ${ZP(p.entry)} → 現 ${num(p.current)?Number(p.current).toPrecision(4):'—'} ・ ${num(p.held_h)?p.held_h.toFixed(1):'—'} 小時</div></div><div class=rt><b>${usd(v)}</b><div><span class="pill ${cl(p.pct)}">${pc(p.pct)}</span></div></div></div>`}).join('')||'<div class=empty>目前無持倉</div>'}},
+act:{t:'🔭 獵幣動態',r(){const fw=FW();return `<div class=empty style="padding:6px 0">本期 ${fw.lbl}</div>`+((FR()).map(v=>`<div class=lg><span class=tm>${e((v.time||'').slice(11,16))}</span><span class="tag t-${v.verdict=='buy'?'buy':v.verdict=='watch'?'watch':'risk'}">${({buy:'買入',watch:'觀察',pass:'淘汰'})[v.verdict]||'—'}</span><span><b>${e(v.symbol)}</b>${CAI(v)} ${e(v.killed_by||'')}</span></div>`).join('')||'<div class=empty>本期暫無動態</div>')}},
+log:{t:'📝 紀錄',r(){return ((D.desk||{}).log||[]).map(x=>`<div class=lg><span class=tm>${hm(x.ts)}</span><span class="tag t-${x.tag}">${TAG[x.tag]||x.tag}</span><span><b>${e(x.symbol)}</b>${CAI(x)} ${e(x.text)}${num(x.pnl)?` <span class=${cl(x.pnl)}>${usd(x.pnl,1)}</span>`:''}</span></div>`).join('')||'<div class=empty>暫無紀錄</div>'}},
+his:{t:'📚 已平倉',r(){const cs=D.closed||[];return cs.slice().reverse().map(c=>`<div class=row onclick="OP('c',${c.id})">${av(c.symbol)}<div class=mid><div class=nm>${e(c.symbol)}</div>${CA(c)}<div class=st>${e(ZR(c.exit_reason))}</div><div class=st>進場 ${ZP(c.entry)} → 出場 ${ZP(ZX(c.id))}</div><div class=st>成本 ${usd((c.proceeds||0)-(c.realized||0))} → 回收 ${usd(c.proceeds||0)} ・ ${e((c.closed||'').slice(5,16))}</div></div><div class=rt><b class=${cl(c.realized)}>${usd(c.realized,1)}</b><div><span class="pill ${cl(c.pct)}">${pc(c.pct)}</span></div></div></div>`).join('')+(D.cancelled||[]).map(c=>`<div class=row style="opacity:.55">${av(c.symbol)}<div class=mid><div class=nm>${e(c.symbol)} <small class=st>已取消</small></div>${CA(c)}<div class=st>${e(c.reason)}</div></div></div>`).join('')||'<div class=empty>尚無已平倉交易</div>'}},
+why:{t:'🛡️ 淘汰原因',r(){const rs=(D.desk||{}).reasons||[],mx=Math.max(1,...rs.map(x=>x.n));return rs.map(x=>`<div class=bar><div style="display:flex;justify-content:space-between"><span>${e(x.label)}</span><b>${x.n}</b></div><div class=bt><i style="width:${x.n/mx*100}%"></i></div></div>`).join('')||'<div class=empty>尚無淘汰</div>'}},
+desk:{t:'🧠 交易台 · 5 個代理',r(){const k=D.desk||{},o0=(D.open||[])[0],lc=k.last_close;const AG=[['🔭','獵手 Desk Hunter',k.last_scan?`最近掃描 ${k.last_scan.slice(11,16)} ・ ${k.scan_runs??0} 輪`:'—',`${k.scanned??0} 對 / ${k.leads??0} 線索`],['🛡️','風控 Desk Risk','風險篩選',`淘汰 ${k.risk_dead??0}（${k.risk_pct??0}%）`],['🐋','資金流 Desk Flow','資金流確認',`確認 ${k.flow_confirm??0} / ${k.flow_checked??0}`],['🧠','主管 Desk Head','裁決：買入 / 觀察 / 淘汰',`${k.judge?.buy??0} / ${k.judge?.watch??0} / ${k.judge?.pass??0}`],['💼','交易員 Desk Trader',o0?`持有 ${o0.symbol} ${pc(o0.pct)}`:'無持倉',lc?`上筆 ${lc.symbol} ${usd(lc.pnl,1)}`:'上筆 —']];
+ return AG.map(a=>`<div class=row style="cursor:default"><div class=av style="background:var(--card2)">${a[0]}</div><div class=mid><div class=nm>${a[1]}</div><div class=st>${e(a[2])}</div></div><div class=rt><span class=sc>${e(a[3])}</span></div></div>`).join('')}},
+cost:{t:'💸 成本',r(){return '<div class=empty>🔒 策略參數不公開（預覽版）</div>'}},
+rul:{t:'📏 規則',r(){return '<div class=empty>🔒 策略參數不公開（預覽版）</div>'}}
+};
+function dossier(kind,id){const ds=(D.desk||{}).dossiers||{};let x,title,head='';
+ if(kind=='w')return['—','<div class=empty>已移除</div>'];
+ const o=(kind=='o'?(D.open||[]):(D.closed||[])).find(p=>p.id==id);if(!o)return['—','<div class=empty>找不到</div>'];const q=ds[String(id)]||{};
+ head=CAF(o)+`<div class=kv><div><span>進場價</span><b>${ZP(o.entry)}</b></div><div><span>${kind=='o'?'現價':'平倉時間'}</span><b>${kind=='o'?(num(o.current)?Number(o.current).toPrecision(4):'—'):e((o.closed||'').slice(5,16))}</b></div><div><span>${kind=='o'?'未實現':'已實現'}</span><b class=${cl(kind=='o'?o.unrealized:o.realized)}>${usd(kind=='o'?o.unrealized:o.realized,1)}</b></div><div><span>報酬</span><b class=${cl(o.pct)}>${pc(o.pct)}</b></div><div><span>開倉</span><b>${e((o.opened||'').slice(5,16))}</b></div><div><span>${kind=='o'?'持有':'出場原因'}</span><b style="font-size:12.5px">${kind=='o'?(num(o.held_h)?o.held_h.toFixed(1)+' 小時':'—'):e(ZR(o.exit_reason))}</b></div></div>`+
+ (kind=='o'&&o.spark&&o.spark.length>1?`<div style="height:90px;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden">${spark(o.spark,300,90,(o.pct||0)>=0?'#16c784':'#ea3943',1)}</div>`:'')+
+ ZL(kind,o)+`<div class=rule><h4>進場時的檔案（dossier）</h4><div><span>來源</span><span>${e(q.source||'—')}</span></div></div>`;
+ return [o.symbol,head+kv(Object.assign({},q,{whale:ZW(o.id)}))+'']}
+function kv(x){return `<div class=kv><div><span>流動性</span><b>${k$(x.liq)}</b></div><div><span>市值</span><b>${k$(x.mcap)}</b></div><div><span>1 小時漲跌</span><b class=${cl(x.chg1h)}>${pc(x.chg1h)}</b></div><div><span>5 分鐘 買 / 賣</span><b>${x.buys5??'—'} / ${x.sells5??'—'}</b></div><div><span>前十大持有</span><b>${num(x.top10)?x.top10.toFixed(1)+'%':'—'}</b></div><div><span>上線時間</span><b>${ageS(x.age_h)}</b></div><div><span>持有人數</span><b>${x.holders??'—'}</b></div><div><span>開發者持幣</span><b>${num(x.dev_pct)?x.dev_pct+'%':'—'}</b></div><div style="grid-column:1/-1"><span>鯨魚 / 聰明錢</span><b>${e(x.whale||'—')}</b></div></div>`}
+function OP(kind,id){if(kind in V){STACK=[[kind]]}else STACK.push([kind,id]);RM();$('ov').classList.add('on');document.body.style.overflow='hidden'}
+function BK(){STACK.pop();if(!STACK.length)return CL();RM()}
+function CL(){STACK=[];$('ov').classList.remove('on');document.body.style.overflow=''}
+function RM(){if(!STACK.length||!D)return;const [kd,id]=STACK[STACK.length-1];let t,b;if(kd in V){t=V[kd].t;b=V[kd].r()}else{[t,b]=dossier(kd,id)}
+ const y=$('md').scrollTop,same=$('md').dataset.v==kd+id;$('md').innerHTML=`<div class=mh>${STACK.length>1?'<button class=bk onclick="BK()">‹ 返回</button>':''}<h2>${e(t)}</h2><button onclick="CL()">✕</button></div>`+b;$('md').dataset.v=kd+id;if(same)$('md').scrollTop=y}
+function tile(id,ic,ti,big,sub,cls,extra){return `<div class="tile ${cls||''}" onclick="OP('${id}')"><div class=ti><i>${ic}</i>${ti}</div><div class=big>${big}</div><div class=sub>${sub}</div>${extra||''}</div>`}
+function FW(){const A=Date.UTC(2026,9,31,16),L=1728e5,n=Date.now(),s=A+Math.floor((n-A)/L)*L,f=t=>{const x=new Date(t+288e5);return `${String(x.getUTCMonth()+1).padStart(2,'0')}/${String(x.getUTCDate()).padStart(2,'0')} ${String(x.getUTCHours()).padStart(2,'0')}:00`};return{s,e:s+L,lbl:`${f(s)} – ${f(s+L)}`}}
+function FR(){const w=FW();return (D.recent||[]).filter(v=>{const t=Date.parse((v.time||'').replace(' ','T')+'+08:00');return t>=w.s&&t<w.e})}
+function FC(){const w=D.feed_window;return (w&&w.start&&Date.parse(w.start.replace(' ','T')+'+08:00')===FW().s)?w.count:FR().length}
+function G(){const d=D,m=d.metrics||{},k=d.desk||{},st=d.start_equity||1000,eq=st+(m.realized_usd||0)+(m.unrealized_usd||0),pnl=eq-st,op=d.open||[],cs=d.closed||[],hist=(J.history&&J.history.length>1)?J.history:(d.equity_history||[]),cfg=d.config||{},cc=k.costs||{},opu=op.reduce((a,p)=>a+(p.unrealized||0),0);
+ const td=new Date(Date.now()+288e5).toISOString().slice(0,10),tdc=cs.filter(c=>(c.closed||'').slice(0,10)==td),tp=tdc.reduce((a,c)=>a+(c.realized||0),0)+opu,nW=k.wins??0,nL=k.losses??0,wr=nW+nL?nW/(nW+nL)*100:null,paused=(d.snapshot||{}).paused,age=Date.now()/1000-(J.received||0),stx=age>120?['延遲','dn']:paused?['暫停','nu']:['運作中','up'];
+ const [ei,ef]=usd(eq).split('.');
+ $('hero').innerHTML=`<div class=hero><div class=l>總資產估值（USD）・起始 $${st.toLocaleString()}</div><div class=eq onclick="OP('pnl')">${ei}<small>.${ef||'00'}</small></div>
+ <div class=pr><div class=pb onclick="OP('his')"><span>今日損益</span><b class=${cl(tp)}>${usd(tp,1)}</b><i class=${cl(tp)}>${pc(tp/st*100)}</i></div><div class=pb onclick="OP('pnl')"><span>總損益</span><b class=${cl(pnl)}>${usd(pnl,1)}</b><i class=${cl(pnl)}>${pc(pnl/st*100)}</i></div></div>
+ ${(()=>{const sv=spark(hist,400,70,pnl>=0?'#25c26e':'#f6465d',1);return sv?`<div class=ch onclick="OP('pnl')">${sv}</div>`:''})()}
+ <div class=qa><div onclick="OP('pos')"><i>💼</i>持倉</div><div onclick="OP('his')"><i>📚</i>已平倉</div><div onclick="OP('act')"><i>🔭</i>獵幣動態</div><div onclick="OP('log')"><i>📝</i>紀錄</div></div></div>`;
+ const posR=op.map(p=>{const v=num(p.value)?p.value:p.size_usd*(1+(p.pct||0)/100);return `<div class=row onclick="OP('o',${p.id})">${av(p.symbol)}<div class=mid><div class=nm>${e(p.symbol)}</div>${CA(p)}</div><div class=rt><b>${usd(v)}</b><div class="${cl(p.unrealized)}" style="font-size:12px">${usd(p.unrealized,1)} ・ ${pc(p.pct)}</div></div></div>`}).join('');
+ const csR=cs.slice(-4).reverse().map(c=>`<div class=row onclick="OP('c',${c.id})">${av(c.symbol)}<div class=mid><div class=nm>${e(c.symbol)}</div>${CA(c)}<div class=st>${e((c.closed||'').slice(5,16))}・${e(ZR(c.exit_reason))}</div></div><div class=rt><b class=${cl(c.realized)}>${usd(c.realized,1)}</b>${(()=>{const q=num(c.pct)?c.pct:(num(c.realized)&&cfg.paper?.size_usd?c.realized/cfg.paper.size_usd*100:null);return num(q)?`<div><span class="pill ${cl(q)}">${pc(q)}</span></div>`:''})()}</div></div>`).join('');
+ const T=(id,ic,ti,big,sub,cls,x)=>`<div class="tile ${cls||''}" onclick="OP('${id}')"><div class=ti><i>${ic}</i>${ti}</div><div class=big>${big}</div><div class=sub>${sub}</div>${x||''}</div>`;
+ const ls=k.lessons&&!k.lessons.err&&k.lessons;
+ $('grid').innerHTML=`<div class=sh><h3>持倉 ${op.length?'<span class=nu style="font-weight:500">'+op.length+'</span>':''}</h3><a onclick="OP('pos')">全部 ›</a></div><div class=lst>${posR||'<div class=emp><b>🌙</b>目前空手，交易台持續掃描中</div>'}</div>
+ <div class=sh><h3>概覽</h3></div><div class=grid>
+ ${T('pnl','🏆','勝率',wr==null?'—':wr.toFixed(0)+'%',`勝 ${nW}・負 ${nL}`)}
+ ${T('desk','🧠','交易台',`<span class=${stx[1]}>${stx[0]}</span>`,`掃描 ${k.scan_runs??0} 輪・上次 ${e((k.last_scan||'—').slice(11,16))}`)}
+ ${T('act','🔭','獵幣動態',FC(),`本期・最近 ${e(FR()[0]?.symbol||'—')}`)}
+ ${T('why','🛡️','淘汰',k.killed??0,`最多：${e((k.reasons||[])[0]?.label||'—')}`)}
+ ${T('cost','💸','交易成本',usd(cc.total_usd||0),`手續費 ${cfg.costs?.dex_fee_pct??'—'}%・MEV ${cfg.costs?.mev_pct??'—'}%`)}
+ ${T('rul','📏','規則',`${cfg.exit?.stop_loss_pct??'—'}%`,`硬停損・單筆 $${cfg.paper?.size_usd??'—'}`)}
+ ${ls?T('les','💡','學習摘要',`${ls.tips_zh?.length||0} 條建議`,`${ls.trades??0} 筆交易・勝率 ${num(ls.win_rate)?(ls.win_rate*100).toFixed(0)+'%':'—'}`,'wide',ls.tips_zh?.[0]?`<div class=tip>${e(ls.tips_zh[0])}</div>`:''):''}
+ </div>
+ <div class=sh><h3>最近平倉</h3><a onclick="OP('his')">全部 ${cs.length} ›</a></div><div class=lst>${csR||'<div class=emp>尚無平倉紀錄</div>'}</div>`}
+V.les={t:'💡 學習摘要',r(){const l=(D.desk||{}).lessons||{};return `<div class=kv><div><span>已學習線索</span><b>${l.leads_learned??'—'}</b></div><div><span>交易筆數</span><b>${l.trades??'—'}</b></div><div><span>勝率</span><b>${num(l.win_rate)?(l.win_rate*100).toFixed(0)+'%':'—'}</b></div><div><span>損益</span><b class=${cl(l.pnl)}>${usd(l.pnl,1)}</b></div></div><div class=rule><h4>建議</h4><ol class=tips>${(l.tips_zh||[]).map(t=>`<li>${e(t)}</li>`).join('')||'<li>—</li>'}</ol></div><div class=note>${e(l.note||'')}・產生於 ${e(l.generated_at||'—')}</div>`}};
+async function L(){try{const r=await fetch('/meme/api/data?k='+encodeURIComponent(K),{cache:'no-store'});if(r.status===403){location.href='/perp-dash/login?next=/meme';return}if(!r.ok)throw'HTTP '+r.status;J=await r.json();D=J.data;
+ PT=D.push_ts||J.received;const age=Date.now()/1000-J.received,stale=age>120;$('dot').className='dot'+(stale?' stale':'');$('live').className='live'+(stale?' stale':'');$('lvt').textContent=stale?'延遲':'即時';$('warn').style.display=stale?'block':'none';$('warn').textContent='⚠️ 資料已 '+Math.round(age/60)+' 分鐘未更新，推送可能中斷';
+ G();if(!J0&&location.hash.length>1){J0=1;const h=location.hash.slice(1).split(':');h[0] in V?OP(h[0]):(h[0]!='w'&&OP(h[0],+h[1]))}J0=1;RM();$('ft').textContent='最後更新（台北時間）'+tpe(J.received,{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'})+' ・ 每 10 秒自動更新 ・ 僅供紙上模擬'}
+ catch(err){$('warn').style.display='block';$('warn').textContent='讀取失敗：'+err}}
+let J0=0,PT=0,NX=Date.now()+10000,BZ=0;async function F(){NX=Date.now()+10000;await L()}
+function T(){const n=Date.now();if(n>=NX&&!BZ){F()}const fr=$('fz');if(PT){const a=Math.max(0,Math.round(n/1000-PT)),late=a>90;fr.className='fz'+(late?' late':'');$('fage').textContent=(late?'⚠️ 資料延遲 ・ ':'')+'最後更新 '+a+' 秒前'}$('fnx').textContent='下次更新 '+Math.max(0,Math.ceil((NX-n)/1000))+' 秒'}
+async function RB(){const b=$('rb');if(b.disabled)return;b.disabled=true;b.textContent='更新中…';BZ=1;try{await F()}finally{BZ=0;b.textContent='立即更新';setTimeout(()=>{b.disabled=false},3000)}}
+document.addEventListener('keydown',ev=>{if(ev.key=='Escape')CL()});
+F();setInterval(T,1000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)L()});
+</script><script>(function(){const V='PREVIEW_NO_PUSH';const L=location,M=L.pathname.startsWith('/meme'),B=M?'/meme/push':'/perp-dash/push',Q=new URLSearchParams(L.search);
+let K=M?(Q.get('k')||''):(Q.get('key')||'');if(M&&K){try{localStorage.setItem('meme_vk',K)}catch(e){}}
+if(M&&K){const l=document.createElement('link');l.rel='manifest';l.href='/meme/manifest.json?k='+encodeURIComponent(K);document.head.appendChild(l)}
+const w=document.getElementById('tnav_r')||document.body.appendChild(document.createElement('div'));
+function bt(t,f){const b=document.createElement('button');b.textContent=t;b.style.cssText='padding:9px 14px;border-radius:20px;border:0;background:#14b8a6;color:#04111a;font-weight:700;box-shadow:0 2px 8px #0008';b.onclick=f;w.appendChild(b);return b}
+function u8(s){s=s.replace(/-/g,'+').replace(/_/g,'/');const r=atob(s+'='.repeat((4-s.length%4)%4));return Uint8Array.from(r,c=>c.charCodeAt(0))}
+function api(p,b){const h={'Content-Type':'application/json','X-Req':'1'};if(K)h['X-Dash-Key']=K;return fetch(B+'/'+p,{method:'POST',headers:h,credentials:'same-origin',body:JSON.stringify(b||{})}).then(r=>{if(!r.ok){const e=new Error('HTTP '+r.status);e.st=r.status;throw e};return r.json()})}
+function draw(on){w.innerHTML='';if(on){bt('🔔測試',()=>api('test').then(()=>alert('已送出測試通知，幾秒內會跳出')).catch(e=>{if(e.st===403){alert('需要先登入。');location.href='/perp-dash/login?next='+(M?'/meme':'/perp-dash');return}alert('測試失敗：'+e.message)}));
+bt('關閉',async()=>{const r=await navigator.serviceWorker.ready,s=await r.pushManager.getSubscription();if(s){await api('unsubscribe',{endpoint:s.endpoint}).catch(()=>{});await s.unsubscribe()}draw(false)})}else bt('🔔 通知',on_);if(!M){const a=document.createElement('a');a.href='/perp-dash/account';a.textContent='帳號';a.style.cssText='align-self:center;color:#8f84ff;font-size:13px;margin-left:4px';w.appendChild(a)}}
+async function on_(){try{if(!('serviceWorker' in navigator)||!('PushManager' in window)||!('Notification' in window)){alert('這個瀏覽器不支援推播。iPhone 請用 Safari「分享 → 加入主畫面」，再從主畫面圖示開啟（iOS 16.4 以上）。');return}
+const p=await Notification.requestPermission();if(p!=='granted'){alert('通知權限未允許，請到設定裡開啟此網站的通知。');return}
+const r=await navigator.serviceWorker.register('/sw.js',{scope:'/'});await navigator.serviceWorker.ready;
+let s=await r.pushManager.getSubscription();if(!s)s=await r.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:u8(V)});
+try{await api('subscribe',s.toJSON())}catch(e){try{await s.unsubscribe()}catch(_){}throw e}draw(true);alert('通知已開啟')}catch(e){if(e.st===403){alert('需要先登入。主畫面 App 和 Safari 的登入是分開的，請在這個 App 裡登入一次，再點「開啟通知」。');location.href='/perp-dash/login?next='+(M?'/meme':'/perp-dash');return}alert('開啟失敗：'+e.message)}}
+if('serviceWorker' in navigator&&'PushManager' in window){navigator.serviceWorker.getRegistration('/').then(r=>r?r.pushManager.getSubscription():null).then(s=>{const on=!!s&&Notification.permission==='granted';draw(on);if(on)api('subscribe',s.toJSON()).catch(()=>{})}).catch(()=>draw(false))}else draw(false)})();</script><script src='app.js'></script><script>async function MSB(){const b=$('msb');if(b.disabled)return;b.disabled=true;b.textContent='掃描中…';let m='';try{const H={credentials:'same-origin',cache:'no-store'};let j=await(await fetch('/meme/ctl/scan',H)).json();const r=await fetch('/meme/ctl/scan',{...H,method:'POST',headers:{'X-Req':'1','X-CSRF':j.csrf||''}});j=await r.json();if(j.ok||j.running){for(let i=0;i<20;i++){await new Promise(z=>setTimeout(z,8000));j=await(await fetch('/meme/ctl/scan',H)).json();if(!j.running)break}m=j.running?'仍在掃描':'掃描完成';try{await F()}catch(e){}}else m=r.status==403?'請重新登入':'無法掃描'}catch(e){m='連線失敗'}b.textContent=m;setTimeout(()=>{b.textContent='手動掃描';b.disabled=false},2500)}</script><style>#msb{background:#c4f45c;color:#000;border:0;border-radius:999px;padding:4px 11px;font-size:11px;font-weight:600;white-space:nowrap}#msb:disabled{opacity:.6}#rb{white-space:nowrap}</style><script>(function(){let C='',ON=null;const b=()=>document.getElementById('atb');
+function R(j){ON=!!j.on;const x=b();if(!x)return;x.hidden=false;x.className=ON?'on':'off';x.textContent=ON?'自動交易 開':'自動交易 關';x.title=ON?'按一下關閉自動交易｜目前：'+'自動掃描/買入/賣出 開啟（無停損）':'按一下開啟自動交易｜目前：不自動掃描、不買、持倉不自動賣';x.disabled=false}
+async function G(){try{const r=await fetch('/meme/ctl/auto',{credentials:'same-origin',cache:'no-store'});if(r.status!=200)return;const j=await r.json();C=j.csrf;R(j)}catch(_){}}
+window.ATB=async function(){const x=b();if(!x||x.disabled||ON===null)return;const to=!ON;
+if(!confirm(to?'開啟自動交易？\n會自動掃描、自動買入、自動停利/出場（不設停損）。':'關閉自動交易？\n全部停止：不掃描、不買、持倉也不自動賣。'))return;
+x.disabled=true;let m='';try{if(!C)await G();const r=await fetch('/meme/ctl/auto',{method:'POST',credentials:'same-origin',cache:'no-store',headers:{'X-Req':'1','X-CSRF':C,'Content-Type':'application/json'},body:JSON.stringify({on:to})});const j=await r.json();if(r.status==200){R(j);m=j.on?'已開啟自動交易':'已關閉自動交易'}else m='失敗：'+(j.err||r.status)}catch(_){m='失敗：網路錯誤'}
+x.disabled=false;try{const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}catch(_){}};
+if(document.readyState=='loading')document.addEventListener('DOMContentLoaded',G);else G()})()</script><script>(function(){const B=()=>document.getElementById('v54b');
+function S(on){const b=B();if(b)b.hidden=!!on}
+async function G(){try{const r=await fetch('/meme/ctl/auto',{credentials:'same-origin',cache:'no-store'});if(r.status==200){const j=await r.json();S(j.on||!j.mon)}}catch(_){}}
+function W(){const a=document.getElementById('atb');if(a)new MutationObserver(()=>{if(a.className=='on'||a.className=='off')S(a.className=='on')}).observe(a,{attributes:true,attributeFilter:['class']})}
+function I(){G();W()}if(document.readyState=='loading')document.addEventListener('DOMContentLoaded',I);else I()})()</script></body></html>
